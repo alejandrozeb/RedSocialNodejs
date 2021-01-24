@@ -17,6 +17,9 @@
 
     usaremos filesystem para los archivos
     gravatar es un servicio para registrarte con tu correo y podemos consumir la identificacion con eso.
+     usaremos mongo en local
+     mongod
 
+     
 
 */
