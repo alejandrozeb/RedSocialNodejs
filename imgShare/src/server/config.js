@@ -2,7 +2,9 @@ const path = require('path');
 const exphbs= require("express-handlebars");
 const morgan = require("morgan");
 const multer= require("multer");
-const express = require("express")
+const express = require("express");
+const routes = require('../routes/index');
+
 module.exports = app =>{
     //settings
     app.set('port', process.env.PORT || 3000);
@@ -24,7 +26,8 @@ module.exports = app =>{
     app.use(express.json());    //para recibir json con ajax
 
     //routes
-
+    routes(app);
+    //static files
     //erros
 
 
