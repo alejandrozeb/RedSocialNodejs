@@ -28,6 +28,7 @@ module.exports = app =>{
     //routes
     routes(app);
     //static files
+    app.use('/public',express.static(path.join(__dirname, '../public')));
     //erros
 
 
