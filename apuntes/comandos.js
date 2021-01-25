@@ -20,6 +20,12 @@
      usaremos mongo en local
      mongod
 
+
+     dependencias de desarrollo
+     nodemon
+
+     
+     npm i nodemon@1.18.7 -D
      
 
 */
