@@ -1,5 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const home= require("../controllers/home");
+const image= require("../controllers/image");
+
 module.exports = app =>{
-    app.get('/', (req,res) => {
-        res.send('index page');
-    });
-}
+    router.get('/', home.index);
+
+    app.use(router);
+};
