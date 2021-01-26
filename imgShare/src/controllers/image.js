@@ -1,9 +1,14 @@
+const path = require("path");
 const ctrl = {};
 ctrl.index= (req,res) =>{
     res.send('image pag');
 };
 ctrl.create = (req,res)  =>{
-    res.send('created');
+    //multer hae visible la info
+    const imageTempPath = req.file.path;
+    const ext = path.extname(req.file.originalname).toLowerCase();    //saca la extension de la imagen
+    const targetPath = path.resolve('src/public/upload/test${ext}');
+    res.send('works!');
 };
 
 ctrl.like = (req,res)  =>{
