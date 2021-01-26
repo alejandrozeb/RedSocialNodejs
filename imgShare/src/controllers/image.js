@@ -1,9 +1,12 @@
 const path = require("path");
+const {randomNumber} = require('../helpers/libs');
 const ctrl = {};
 ctrl.index= (req,res) =>{
     res.send('image pag');
 };
 ctrl.create = (req,res)  =>{
+    const imgUrl = randomNumber();
+    console.log(imgUrl);
     //multer hae visible la info
     const imageTempPath = req.file.path;
     const ext = path.extname(req.file.originalname).toLowerCase();    //saca la extension de la imagen
