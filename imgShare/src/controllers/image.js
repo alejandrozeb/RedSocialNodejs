@@ -23,8 +23,12 @@ ctrl.create = async(req,res)  =>{
             filename: imgUrl + ext,
             description: req.body.description
         });
-        console.log(newImg);
+        const imageSaved =  await newImg.save();        
+    } else{
+        await fs.unlink(imageTempPath);
+        res.status(500).json({error: 'Only Images are allowed'});
     }
+
     res.send('works!');
 };
 
