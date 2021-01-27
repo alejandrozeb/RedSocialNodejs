@@ -9,8 +9,8 @@ const ctrl = {};
 ctrl.index= (req,res) =>{
     res.send('image pag');
 };
-ctrl.create = async(req,res)  =>{
-    const saveImage = () =>{
+ctrl.create = (req,res)  =>{
+    const saveImage = async () =>{
         const imgUrl = randomNumber();
         const images =  await image.find({filename: imgUrl});
         if(images.length>0){
@@ -27,13 +27,13 @@ ctrl.create = async(req,res)  =>{
                 filename: imgUrl + ext,
                 description: req.body.description
             });
-            const imageSaved =  await newImg.save();        
+            const imageSaved =  await newImg.save(); 
+           // res.redirect('/images');
+           res.send('works');       
         } else{
             await fs.unlink(imageTempPath);
             res.status(500).json({error: 'Only Images are allowed'});
         }
-
-        res.send('works!');
     }
     };
     saveImage();   
