@@ -7,7 +7,7 @@ const image = require("../models/image");
 
 const ctrl = {};
 ctrl.index= (req,res) =>{
-    res.send('image pag');
+    res.render('image');
 };
 ctrl.create = (req,res)  =>{
     const saveImage = async () =>{
