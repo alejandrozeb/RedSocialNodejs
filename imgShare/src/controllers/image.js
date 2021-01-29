@@ -6,8 +6,12 @@ const image = require("../models/image");
 
 
 const ctrl = {};
-ctrl.index= (req,res) =>{
-    res.render('image');
+ctrl.index= async (req,res) =>{
+   /*  parametroImagen = req.params.image_id;
+    parametroImagen = parametroImagen.replace(path.extname(parametroImagen), '.'); */
+    const image = await Image.findOne({filename: req.params.image_id});
+
+    res.render('image', image);
 };
 ctrl.create = (req,res)  =>{
     const saveImage = async () =>{
