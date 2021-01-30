@@ -26,6 +26,12 @@
 
      
      npm i nodemon@1.18.7 -D
+
+     dependencia extra
+
+     npm i moment@2.22.2
+
+     permite ver el tiempo en que se actualizo
      
 
 */
