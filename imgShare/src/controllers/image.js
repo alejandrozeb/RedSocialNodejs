@@ -59,6 +59,8 @@ ctrl.like = async (req,res)  =>{
         image.likes = image.likes +1;
         await image.save();
         res.json({likes: image.likes});
+    }else{
+        res.status(500).json({error: 'internal Error'});
     }
 };
 

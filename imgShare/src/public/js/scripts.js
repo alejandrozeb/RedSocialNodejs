@@ -6,7 +6,6 @@ $('#btn-like').click(function (e){
     console.log(imgId);
     $.post('/images/' + imgId + '/like')
         .done(data => {
-            console.log(data);
             $('.likes-count').text(data.likes);
         });
 })
