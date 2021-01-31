@@ -9,9 +9,9 @@ const ctrl = {};
 ctrl.index= async (req,res) =>{
    /*  parametroImagen = req.params.image_id;
     parametroImagen = parametroImagen.replace(path.extname(parametroImagen), '.'); */
-    const image = await Image.findOne({filename: req.params.image_id});
-
-    res.render('image', image);
+    const image = await Image.findOne({filename: req.params.image_id}).lean();
+    const comments = await Comment.find({image_id: image._id}).lean();
+    res.render('image', {image,comments});
 };
 ctrl.create = (req,res)  =>{
     const saveImage = async () =>{
