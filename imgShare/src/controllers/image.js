@@ -9,9 +9,17 @@ const ctrl = {};
 ctrl.index= async (req,res) =>{
    /*  parametroImagen = req.params.image_id;
     parametroImagen = parametroImagen.replace(path.extname(parametroImagen), '.'); */
-    const image = await Image.findOne({filename: req.params.image_id}).lean();
-    const comments = await Comment.find({image_id: image._id}).lean();
-    res.render('image', {image,comments});
+    let image = await Image.findOne({filename: req.params.image_id});
+    if(image){
+        image.views = image.views + 1;
+        await image.save();
+        image = await Image.findOne({filename: req.params.image_id}).lean();
+        const comments = await Comment.find({image_id: image._id}).lean();
+        res.render('image', {image,comments});
+    }else{
+        res.redirect('/');
+    }
+
 };
 ctrl.create = (req,res)  =>{
     const saveImage = async () =>{
