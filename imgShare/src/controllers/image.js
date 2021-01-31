@@ -64,6 +64,8 @@ ctrl.comment = async(req,res)  =>{
         newComment.image_id = image._id;
         await newComment.save();
         res.redirect('/images/'+ image.filename);
+    }else{
+        res.redirect('/');
     }
     
     
