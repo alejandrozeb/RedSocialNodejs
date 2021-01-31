@@ -52,8 +52,14 @@ ctrl.create = (req,res)  =>{
     //multer hae visible la info    
 };
 
-ctrl.like = (req,res)  =>{
-    res.send('like');
+ctrl.like = async (req,res)  =>{
+    console.log('entra');
+    const image = await Image.findOne({filename: req.params.image_id});
+    if(image){
+        image.likes = image.likes +1;
+        await image.save();
+        res.json({likes: image.likes});
+    }
 };
 
 ctrl.comment = async(req,res)  =>{
