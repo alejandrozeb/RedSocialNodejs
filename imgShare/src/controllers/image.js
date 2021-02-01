@@ -80,8 +80,18 @@ ctrl.comment = async(req,res)  =>{
     
 };
 
-ctrl.remove = (req,res)  =>{
-    res.send('deleted');
+ctrl.remove = async (req,res)  =>{
+    const image = await Image.findOne({filename: req.params.image_id});
+    if(image){
+        //eliminar de la carpeta
+        await fs.unlink(path.resolve('./src/public/upload/' + image.filename));
+        //elimar comentarios
+        await Comment.deleteOne({image_id: image._id});
+        //eliminar datos de la imagen
+        await image.remove();
+        res.json(true);
+    }
+//    res.send('deleted');
 };
 
 module.exports = ctrl;
