@@ -4,4 +4,5 @@ const Comments = require('./comments');
 
 module.exports = function(viewModel){
     images.popular();
+    Stats();
 }
