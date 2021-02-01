@@ -1,7 +1,7 @@
 const {Image} = require('../models/');
 
 
-modules.exports = {
+module.exports = {
     async popular(){
         const images = await Image.find()
             .limit(9)
