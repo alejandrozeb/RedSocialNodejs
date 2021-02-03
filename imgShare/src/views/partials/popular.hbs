@@ -1,0 +1,15 @@
+<div class="card mb-2 mt-2">
+    <div class="card-header bg-dark text-white">
+        <div class="card-body">
+            <div class="row">
+                {{#each sidebar.popular}}
+                    <div class="col-md-4">
+                        <a href="/images/{{filename}}">
+                            <img src="/public/upload/{{filename}}" class="w-100 h-100 image-thumbnail">
+                        </a>              
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
